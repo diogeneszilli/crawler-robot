@@ -13,7 +13,7 @@ class ReservationController {
       const browser = await puppeteer.launch({ headless: true });
       const page = await browser.newPage();
       await page.setViewport({ width: 1920, height: 926 });
-      await page.goto(url);
+      await page.goto(url, {waitUntil: 'networkidle0'});
 
       let result = await page.evaluate(() => {
         const rooms = [];
